@@ -67,4 +67,18 @@ public class Potato : MonoBehaviour
     {
         rb.isKinematic = value;
     }
+    public void LeftButton()
+    {
+        if (!isDead && rb.isKinematic == false)
+            {
+                rb.velocity = new Vector2(0.0f, jumpVelocity);
+            }
+    }
+    public void RightButton()
+    {
+         if (!isDead && rb.isKinematic == false)
+            {
+                rb.velocity = new Vector2(0.0f, -jumpVelocity);
+            }  
+    }
 }
