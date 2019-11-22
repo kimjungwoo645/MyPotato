@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] Text scoreText;
     [SerializeField] Text startText;
+    [SerializeField] Text bestScore;
+    [SerializeField] Text currentScore;
     [SerializeField] Potato potato;
     [SerializeField] GameObject stones;
     [SerializeField] GameObject logo;
@@ -46,8 +48,10 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case State.GAMEOVER:
+                SaveScore();
                 break;
         }
+        
     }
     public void GameStart()
     {
@@ -85,6 +89,28 @@ public class GameManager : MonoBehaviour
         if (state == State.GAMEOVER)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+    }
+    public void SaveScore()
+    {
+        bool Onoff = true;
+
+        if(Onoff)
+        {
+            if(scoreText.text == "Score")
+            {
+                scoreText.text = "0";
+            }
+            currentScore.text = scoreText.text;
+            //최고점수 갱신
+            if(PlayerPrefs.GetInt("BestScore",0) < int.Parse(currentScore.text))
+            {
+                PlayerPrefs.SetInt("BestScore",int.Parse(currentScore.text));
+            }
+
+            bestScore.text = PlayerPrefs.GetInt("BestScore",0).ToString(); 
+
+            Onoff = false;
         }
     }
 }
