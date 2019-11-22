@@ -81,7 +81,7 @@ public class GameManager : MonoBehaviour
     }
 
     public void ReStart()
-    {++
+    {
         if (state == State.GAMEOVER)
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
