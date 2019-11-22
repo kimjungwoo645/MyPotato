@@ -8,7 +8,6 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] Text scoreText;
     [SerializeField] Text startText;
-    [SerializeField] Text overText;
     [SerializeField] Potato potato;
     [SerializeField] GameObject stones;
     [SerializeField] GameObject logo;
@@ -25,11 +24,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         scoreText.gameObject.SetActive(false);
-        overText.gameObject.SetActive(false);
         stones.SetActive(false);
-        gameOver.SetActive(false);
         state = State.GAMEREADY;
         potato.SetKinematic(true);
+        gameOver.SetActive(false);
     }
     private void Update()
     {
@@ -77,7 +75,6 @@ public class GameManager : MonoBehaviour
         foreach(ScrollObject scrollObject in scrollObjects)
         {
             scrollObject.enabled = false;
-            overText.gameObject.SetActive(true);
             gameOver.SetActive(true);
         }
     }
