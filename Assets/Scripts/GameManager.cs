@@ -46,10 +46,6 @@ public class GameManager : MonoBehaviour
                 }
                 break;
             case State.GAMEOVER:
-                if (Input.GetButtonDown("Fire1"))
-                {
-                    SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-                }
                 break;
         }
     }
@@ -82,5 +78,13 @@ public class GameManager : MonoBehaviour
     {
         score++;
         scoreText.text = score.ToString();
+    }
+
+    public void ReStart()
+    {++
+        if (state == State.GAMEOVER)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
     }
 }
